@@ -45,12 +45,16 @@ class PlayerViewController: UIViewController {
         print("view appear")
         updateTintColor()
         updateTrackInfo()
+        simplePlayer.play()
+        updatePlayButton()
         print("finish track")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // TODO: 뷰나갈때 처리 > 심플플레이어
+        simplePlayer.pause()
+        simplePlayer.replaceCurrentItem(with: nil)
         
     }
     
