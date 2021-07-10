@@ -64,6 +64,11 @@ class PlayerViewController: UIViewController {
     
     @IBAction func seek(_ sender: UISlider) {
         // TODO: 시킹 구현
+        guard let currentItem = simplePlayer.currentItem else { return }
+        let position = Double(sender.value)
+        let seconds = currentItem.duration.seconds * position
+        let time = CMTime(seconds: seconds, preferredTimescale: 100)
+        simplePlayer.seek(to: time)
     }
     
     @IBAction func togglePlayButton(_ sender: UIButton) {
